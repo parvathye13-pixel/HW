@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with DOM Styling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    form {
+      padding: 15px;
+      border-radius: 8px;
+      width: 320px;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #message {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 id="formHeading">User Form</h2>
+
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age">
+
+    <button type="button" onclick="applyDOMStyles()">Submit</button>
+  </form>
+
+  <div id="message">✅ Submitted Successfully!</div>
+
+  <script>
+    function applyDOMStyles() {
+      let name = document.getElementById("name");
+      let email = document.getElementById("email");
+
+      // Check if mandatory fields are filled
+      if (name.value.trim() === "" || email.value.trim() === "") {
+        alert("Please fill all mandatory fields!");
+        return;
+      }
+
+      // Highlight mandatory fields
+      name.style.backgroundColor = "#ffffcc"; // light yellow
+      email.style.backgroundColor = "#ffffcc";
+
+      // Style heading
+      let heading = document.getElementById("formHeading");
+      heading.style.color = "darkblue";
+      heading.style.textAlign = "center";
+      heading.style.textDecoration = "underline";
+
+      // Style form
+      let form = document.getElementById("myForm");
+      form.style.backgroundColor = "#fff";
+      form.style.boxShadow = "0px 4px 10px rgba(0,0,0,0.2)";
+      form.style.border = "2px solid #4CAF50";
+
+      // Bold all labels
+      let labels = document.getElementsByTagName("label");
+      for (let i = 0; i < labels.length; i++) {
+        labels[i].style.fontWeight = "bold";
+      }
+
+      // Show success message
+      document.getElementById("message").style.display = "block";
+
+      // Clear fields after submit
+      form.reset();
+    }
+  </script>
+
+</body>
+</html>
